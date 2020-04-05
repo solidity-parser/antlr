@@ -6,9 +6,17 @@
 
 # solidity-antlr4
 
-Solidity grammar for ANTLR4.com/
+Solidity grammar for [ANTLR (ANother Tool for Language Recognition) ](https://www.antlr.org/)
 
 Now maintained by the ConsenSys Diligence team! :tada:
+
+## Build
+
+Run [build.sh](./build.sh) to download ANTLR jar file and compile the [Solidity.g4](./Solidity.g4) file.
+
+## Tests
+
+Run [run-tests.sh](./run-tests.sh) to parse [test.sol](./test.sol).
 
 ## Authors
 

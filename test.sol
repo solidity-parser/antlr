@@ -8,6 +8,8 @@ pragma solidity <=0.4.4;
 pragma solidity =0.4.4;
 pragma solidity 0.4;
 pragma solidity >=0.5.0 <0.7.0;
+pragma solidity ^0.6;
+pragma experimental ABIEncoderV2;
 
 library a {}
 library b {}
@@ -742,5 +744,49 @@ contract PayableAddress {
     function payableFn() public pure {
         address x;
         address y = payable(x);
+    }
+}
+
+// Solidity 0.6
+enum Locations {
+    Continent,
+    Empire,
+    Union,
+    Country,
+    State,
+    City,
+    Council,
+    Village
+}
+
+struct KeyValuePair {
+    string name;
+    int256 value;
+}
+
+struct GlobalBaseStruct {
+    KeyValuePair[] pairs;
+    Locations location;
+}
+
+
+contract VirtualA {
+    GlobalBaseStruct base;
+    event MyEvent(string _myString);
+    function funA() public virtual {
+        emit MyEvent("from A");
+    }
+}
+
+contract VirtualB {
+    function funA() public virtual {
+        //does nothing
+    }
+}
+
+contract VirtualOverdide is VirtualA, VirtualB {
+    function funA() public override(VirtualB,VirtualA) {
+        emit MyEvent("from B");
+        super.funA();
     }
 }
