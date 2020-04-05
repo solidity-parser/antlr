@@ -23,8 +23,8 @@ versionOperator
   : '^' | '~' | '>=' | '>' | '<' | '<=' | '=' ;
 
 versionConstraint
-  : versionOperator? VersionLiteral ';'
-  | versionOperator? DecimalNumber ';' ;
+  : versionOperator? VersionLiteral
+  | versionOperator? DecimalNumber ;
 
 importDeclaration
   : identifier ('as' identifier)? ;
