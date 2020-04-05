@@ -7,7 +7,7 @@ with some extra features taken from [Consensys Diligence's alternative fork](htt
 
 ## Build
 
-Run [build.sh](./build.sh) to download the ANTLR jar file and compile the [Solidity.g4](./Solidity.g4) file. The build will output to the `src` and `target` folders.
+Run [build.sh](./build.sh) to download the ANTLR jar file and compile the [Solidity.g4](./Solidity.g4) file. The build will output the Java classes to the `src` folder and compiled Java classes to the `target` folder. The ANTLR tokens used by the Java parser are in the `src` folder.
 
 ## Tests
 

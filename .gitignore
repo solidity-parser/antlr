@@ -2,3 +2,5 @@ antlr4.jar
 .antlr/*
 src/*
 target/*
+.vscode
+.idea
