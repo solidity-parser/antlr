@@ -1,24 +1,22 @@
-# solidity-antlr4
+# Solidity Language Grammar
 
-Solidity grammar for [ANTLR (ANother Tool for Language Recognition) ](https://www.antlr.org/)
+The [ANTLR (ANother Tool for Language Recognition) ](https://www.antlr.org/) grammar for [Solidity](https://solidity.readthedocs.io/) is maintained in [Solidity.g4](./Solidity.g4).
 
 This is a fork of ([@federicobond](https://github.com/federicobond))'s original [repo](https://github.com/solidityj/solidity-antlr4),
 with some extra features taken from [Consensys Diligence's alternative fork](https://github.com/ConsenSys/solidity-antlr4).
 
 ## Build
 
-Run [build.sh](./build.sh) to download ANTLR jar file and compile the [Solidity.g4](./Solidity.g4) file.
+Run [build.sh](./build.sh) to download the ANTLR jar file and compile the [Solidity.g4](./Solidity.g4) file. The build will output to the `src` and `target` folders.
 
 ## Tests
 
 Run [run-tests.sh](./run-tests.sh) to parse [test.sol](./test.sol).
 
-## Authors
+## Used By
 
-Gonçalo Sá ([@gnsps](https://twitter.com/gnsps))
-
-Federico Bond ([@federicobond](https://github.com/federicobond))
+* [Node.js Solidity parser](https://github.com/solidity-parser/parser)
 
 ## License
 
-MIT
+[MIT](./LICENSE)
