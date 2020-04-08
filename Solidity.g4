@@ -371,7 +371,7 @@ numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
 
 identifier
-  : ('from' | 'calldata' | Identifier) ;
+  : ('from' | 'calldata' | 'receive' | 'callback' | 'payable' | Identifier) ;
 
 BooleanLiteral
   : 'true' | 'false' ;
