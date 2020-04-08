@@ -82,8 +82,7 @@ returnParameters
   : 'returns' parameterList ;
 
 modifierList
-  : ( modifierInvocation | stateMutability | ExternalKeyword
-    | PublicKeyword | InternalKeyword | PrivateKeyword | VirtualKeyword | overrideSpecifier )* ;
+  : (ExternalKeyword | PublicKeyword | InternalKeyword | PrivateKeyword | VirtualKeyword | stateMutability | modifierInvocation | overrideSpecifier )* ;
 
 eventDefinition
   : 'event' identifier eventParameterList AnonymousKeyword? ';' ;
@@ -371,7 +370,7 @@ numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
 
 identifier
-  : ('from' | 'calldata' | 'receive' | 'callback' | 'payable' | Identifier) ;
+  : ('from' | 'calldata' | 'receive' | 'callback' | PayableKeyword | Identifier) ;
 
 BooleanLiteral
   : 'true' | 'false' ;
