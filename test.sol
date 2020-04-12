@@ -790,3 +790,11 @@ contract VirtualOverdide is VirtualA, VirtualB {
         super.funA();
     }
 }
+
+contract stateVariables {
+    bytes32 constant adminRole = keccak256("ADMIN_ROLE");
+    uint immutable totalSupply;
+    constructor(uint _totalSupply) public {
+        totalSupply = _totalSupply;
+    }
+}
