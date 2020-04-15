@@ -798,3 +798,7 @@ contract stateVariables {
         totalSupply = _totalSupply;
     }
 }
+
+contract userDefinedTypesAsMappingKeys {
+  mapping (Foo => uint) map;
+}
