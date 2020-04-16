@@ -125,8 +125,12 @@ typeName
 userDefinedTypeName
   : identifier ( '.' identifier )* ;
 
+mappingKey
+  : elementaryTypeName
+  | userDefinedTypeName ;
+
 mapping
-  : 'mapping' '(' elementaryTypeName '=>' typeName ')' ;
+  : 'mapping' '(' mappingKey '=>' typeName ')' ;
 
 functionTypeName
   : 'function' functionTypeParameterList
