@@ -802,3 +802,8 @@ contract stateVariables {
 contract userDefinedTypesAsMappingKeys {
   mapping (Foo => uint) map;
 }
+
+contract modifierWithVirtualOrOverride {
+  modifier foo() virtual {_;}
+  modifier bar() override {_;}
+}
