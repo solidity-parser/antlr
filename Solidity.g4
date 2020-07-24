@@ -5,7 +5,10 @@
 grammar Solidity;
 
 sourceUnit
-  : (pragmaDirective | importDirective | contractDefinition | enumDefinition | structDefinition)* EOF ;
+  : (spdxLicense | pragmaDirective | importDirective | contractDefinition | enumDefinition | structDefinition)* EOF ;
+
+spdxLicense
+  : '//' 'SPDX-License-Identifier' identifier ;
 
 pragmaDirective
   : 'pragma' pragmaName pragmaValue ';' ;
