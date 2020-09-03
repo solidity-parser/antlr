@@ -312,7 +312,10 @@ assemblyItem
   | HexLiteral ;
 
 assemblyExpression
-  : assemblyCall | assemblyLiteral ;
+  : assemblyCall | assemblyLiteral | assemblyMember ;
+
+assemblyMember
+  : identifier '.' identifier ;
 
 assemblyCall
   : ( 'return' | 'address' | 'byte' | identifier ) ( '(' assemblyExpression? ( ',' assemblyExpression )* ')' )? ;
@@ -324,7 +327,7 @@ assemblyAssignment
   : assemblyIdentifierOrList ':=' assemblyExpression ;
 
 assemblyIdentifierOrList
-  : identifier | '(' assemblyIdentifierList ')' ;
+  : identifier | assemblyMember | '(' assemblyIdentifierList ')' ;
 
 assemblyIdentifierList
   : identifier ( ',' identifier )* ;
