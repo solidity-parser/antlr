@@ -5,7 +5,7 @@
 grammar Solidity;
 
 sourceUnit
-  : (pragmaDirective | importDirective | contractDefinition | enumDefinition | structDefinition)* EOF ;
+  : (pragmaDirective | importDirective | contractDefinition | enumDefinition | structDefinition | functionDefinition)* EOF ;
 
 pragmaDirective
   : 'pragma' pragmaName pragmaValue ';' ;

@@ -816,3 +816,8 @@ contract AssemblySlotNotation {
     }
   }
 }
+
+// top-level function
+function helper(uint x) pure returns (uint) {
+    return x * 2;
+}
