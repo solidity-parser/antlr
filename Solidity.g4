@@ -5,7 +5,15 @@
 grammar Solidity;
 
 sourceUnit
-  : (pragmaDirective | importDirective | contractDefinition | enumDefinition | structDefinition | functionDefinition)* EOF ;
+  : (
+    pragmaDirective
+    | importDirective
+    | contractDefinition
+    | enumDefinition
+    | structDefinition
+    | functionDefinition
+    | fileLevelConstant
+    )* EOF ;
 
 pragmaDirective
   : 'pragma' pragmaName pragmaValue ';' ;
@@ -55,6 +63,9 @@ stateVariableDeclaration
   : typeName
     ( PublicKeyword | InternalKeyword | PrivateKeyword | ConstantKeyword | ImmutableKeyword | overrideSpecifier )*
     identifier ('=' expression)? ';' ;
+
+fileLevelConstant
+  : typeName ConstantKeyword identifier '=' expression ';' ;
 
 usingForDeclaration
   : 'using' identifier 'for' ('*' | typeName) ';' ;
