@@ -823,3 +823,10 @@ function helper(uint x) pure returns (uint) {
 }
 
 uint constant topLevelConstantVariable = 3;
+
+contract HexLiteralsParts {
+  function foo() public {
+    bytes memory c = hex'dead' hex'beef'
+      hex'deadbe' hex'ef';
+  }
+}

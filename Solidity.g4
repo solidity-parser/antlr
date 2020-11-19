@@ -275,7 +275,7 @@ expression
 primaryExpression
   : BooleanLiteral
   | numberLiteral
-  | HexLiteral
+  | hexLiteral
   | stringLiteral
   | identifier ('[' ']')?
   | TypeKeyword
@@ -320,7 +320,7 @@ assemblyItem
   | subAssembly
   | numberLiteral
   | stringLiteral
-  | HexLiteral ;
+  | hexLiteral ;
 
 assemblyExpression
   : assemblyCall | assemblyLiteral | assemblyMember ;
@@ -371,7 +371,7 @@ assemblyIf
   : 'if' assemblyExpression assemblyBlock ;
 
 assemblyLiteral
-  : stringLiteral | DecimalNumber | HexNumber | HexLiteral ;
+  : stringLiteral | DecimalNumber | HexNumber | hexLiteral ;
 
 subAssembly
   : 'assembly' identifier assemblyBlock ;
@@ -411,7 +411,9 @@ NumberUnit
   : 'wei' | 'szabo' | 'finney' | 'ether'
   | 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks' | 'years' ;
 
-HexLiteral : 'hex' ('"' HexDigits? '"' | '\'' HexDigits? '\'') ;
+hexLiteral : HexLiteralFragment+ ;
+
+HexLiteralFragment : 'hex' ('"' HexDigits? '"' | '\'' HexDigits? '\'') ;
 
 fragment
 HexPair
