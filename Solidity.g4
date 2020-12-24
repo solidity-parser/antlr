@@ -25,7 +25,7 @@ pragmaValue
   : version | expression ;
 
 version
-  : versionConstraint versionConstraint? ;
+  : versionConstraint ('||'? versionConstraint)* ;
 
 versionOperator
   : '^' | '~' | '>=' | '>' | '<' | '<=' | '=' ;
