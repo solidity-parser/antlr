@@ -170,7 +170,8 @@ statement
   | returnStatement
   | throwStatement
   | emitStatement
-  | simpleStatement ;
+  | simpleStatement
+  | uncheckedStatement;
 
 expressionStatement
   : expression ';' ;
@@ -191,6 +192,9 @@ whileStatement
 
 simpleStatement
   : ( variableDeclarationStatement | expressionStatement ) ;
+
+uncheckedStatement
+  : 'unchecked' block ;
 
 forStatement
   : 'for' '(' ( simpleStatement | ';' ) ( expressionStatement | ';' ) expression? ')' statement ;

@@ -5,7 +5,7 @@ ANTLR_JAR="antlr4.jar"
 GRAMMAR="Solidity"
 START_RULE="sourceUnit"
 TEST_FILE="test.sol"
-ERROR_PATTERN="mismatched|extraneous|no viable"
+ERROR_PATTERN="mismatched|extraneous|no viable|missing"
 
 if [ ! -e "$ANTLR_JAR" ]; then
   curl https://www.antlr.org/download/antlr-4.7.2-complete.jar -o "$ANTLR_JAR"

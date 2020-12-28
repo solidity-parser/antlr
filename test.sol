@@ -832,3 +832,11 @@ contract HexLiteralsParts {
       hex'deadbe' hex'ef';
   }
 }
+
+contract WithUncheckedBlock {
+  function f() public pure returns (uint) {
+    uint x = 0;
+    unchecked { x--; }
+    return x;
+  }
+}
