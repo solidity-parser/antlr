@@ -412,7 +412,7 @@ HexDigits
   : HexCharacter ( '_'? HexCharacter )* ;
 
 NumberUnit
-  : 'wei' | 'szabo' | 'finney' | 'ether'
+  : 'wei' | 'gwei' | 'szabo' | 'finney' | 'ether'
   | 'seconds' | 'minutes' | 'hours' | 'days' | 'weeks' | 'years' ;
 
 hexLiteral : HexLiteralFragment+ ;
