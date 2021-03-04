@@ -484,8 +484,8 @@ stringLiteral
   : StringLiteralFragment+ ;
 
 StringLiteralFragment
-  : '"' DoubleQuotedStringCharacter* '"'
-  | '\'' SingleQuotedStringCharacter* '\'' ;
+  : 'unicode'? '"' DoubleQuotedStringCharacter* '"'
+  | 'unicode'? '\'' SingleQuotedStringCharacter* '\'' ;
 
 fragment
 DoubleQuotedStringCharacter
