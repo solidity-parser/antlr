@@ -392,7 +392,7 @@ numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
 
 identifier
-  : ('from' | 'calldata' | 'receive' | 'callback' | PayableKeyword | LeaveKeyword | Identifier) ;
+  : ('from' | 'calldata' | 'receive' | 'callback' | ConstructorKeyword | PayableKeyword | LeaveKeyword | Identifier) ;
 
 BooleanLiteral
   : 'true' | 'false' ;
