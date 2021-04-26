@@ -250,7 +250,7 @@ Ufixed
 expression
   : expression ('++' | '--')
   | 'new' typeName
-  | expression '[' expression? ']'
+  | expression '[' expression ']'
   | expression '[' expression? ':' expression? ']'
   | expression '.' identifier
   | expression '{' nameValueList '}'
