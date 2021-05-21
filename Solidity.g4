@@ -13,6 +13,7 @@ sourceUnit
     | structDefinition
     | functionDefinition
     | fileLevelConstant
+    | customErrorDefinition
     )* EOF ;
 
 pragmaDirective
@@ -57,7 +58,8 @@ contractPart
   | modifierDefinition
   | functionDefinition
   | eventDefinition
-  | enumDefinition ;
+  | enumDefinition
+  | customErrorDefinition;
 
 stateVariableDeclaration
   : typeName
@@ -66,6 +68,9 @@ stateVariableDeclaration
 
 fileLevelConstant
   : typeName ConstantKeyword identifier '=' expression ';' ;
+
+customErrorDefinition
+  : 'error' identifier parameterList ';' ;
 
 usingForDeclaration
   : 'using' identifier 'for' ('*' | typeName) ';' ;
@@ -171,7 +176,8 @@ statement
   | throwStatement
   | emitStatement
   | simpleStatement
-  | uncheckedStatement;
+  | uncheckedStatement
+  | revertStatement;
 
 expressionStatement
   : expression ';' ;
@@ -219,6 +225,9 @@ throwStatement
 
 emitStatement
   : 'emit' functionCall ';' ;
+
+revertStatement
+  : 'revert' functionCall ';' ;
 
 variableDeclarationStatement
   : ( 'var' identifierList | variableDeclaration | '(' variableDeclarationList ')' ) ( '=' expression )? ';';
@@ -391,8 +400,10 @@ typeNameExpression
 numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
 
+// some keywords need to be added here to avoid ambiguities
+// for example, "revert" is a keyword but it can also be a function name
 identifier
-  : ('from' | 'calldata' | 'receive' | 'callback' | ConstructorKeyword | PayableKeyword | LeaveKeyword | Identifier) ;
+  : ('from' | 'calldata' | 'receive' | 'callback' | 'revert' | 'error' | ConstructorKeyword | PayableKeyword | LeaveKeyword | Identifier) ;
 
 BooleanLiteral
   : 'true' | 'false' ;
