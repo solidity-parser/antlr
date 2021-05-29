@@ -80,7 +80,7 @@ structDefinition
     '{' ( variableDeclaration ';' (variableDeclaration ';')* )? '}' ;
 
 modifierDefinition
-  : 'modifier' identifier parameterList? ( VirtualKeyword | overrideSpecifier )* block ;
+  : 'modifier' identifier parameterList? ( VirtualKeyword | overrideSpecifier )* ( ';' | block ) ;
 
 modifierInvocation
   : identifier ( '(' expressionList? ')' )? ;
