@@ -39,9 +39,11 @@ importDeclaration
   : identifier ('as' identifier)? ;
 
 importDirective
-  : 'import' StringLiteralFragment ('as' identifier)? ';'
-  | 'import' ('*' | identifier) ('as' identifier)? 'from' StringLiteralFragment ';'
-  | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' StringLiteralFragment ';' ;
+  : 'import' importPath ('as' identifier)? ';'
+  | 'import' ('*' | identifier) ('as' identifier)? 'from' importPath ';'
+  | 'import' '{' importDeclaration ( ',' importDeclaration )* '}' 'from' importPath ';' ;
+
+importPath : StringLiteralFragment ;
 
 contractDefinition
   : 'abstract'? ( 'contract' | 'interface' | 'library' ) identifier
