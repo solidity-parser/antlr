@@ -25,6 +25,14 @@ library a {}
 library b {}
 library c {}
 library f {}
+
+contract testUserDefined {
+    type UserDefinedInsideContractA is uint256;
+    type UserDefinedInsideContractA is uint128;
+
+    function f() {
+    }
+}
 contract test {
     function f(uint a, uint b);
     function g(uint c);

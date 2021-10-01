@@ -62,6 +62,7 @@ contractPart
   : stateVariableDeclaration
   | usingForDeclaration
   | structDefinition
+  | typeDefinition
   | modifierDefinition
   | functionDefinition
   | eventDefinition
