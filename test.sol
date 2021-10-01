@@ -13,6 +13,14 @@ pragma solidity ^0.5.0 || ^0.6.0;
 pragma solidity ^0.5.0 || ^0.6.0 || ^0.7.0;
 pragma experimental ABIEncoderV2;
 
+type UserDefinedA is uint256;
+type UserDefinedB is uint128;
+
+error ErrorA(address _a);
+error ErrorB(uint256 _b);
+error ErrorC(uint128 _c, address _d);
+error ErrorD(uint256 _e, UserDefinedA _f);
+
 library a {}
 library b {}
 library c {}

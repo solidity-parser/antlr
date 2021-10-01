@@ -11,6 +11,7 @@ sourceUnit
     | contractDefinition
     | enumDefinition
     | structDefinition
+    | typeDefinition
     | functionDefinition
     | fileLevelConstant
     | customErrorDefinition
@@ -49,6 +50,10 @@ contractDefinition
   : 'abstract'? ( 'contract' | 'interface' | 'library' ) identifier
     ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
     '{' contractPart* '}' ;
+
+typeDefinition
+  : 'type' identifier
+    'is'  elementaryTypeName ';' ;
 
 inheritanceSpecifier
   : userDefinedTypeName ( '(' expressionList? ')' )? ;
