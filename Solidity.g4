@@ -14,6 +14,7 @@ sourceUnit
     | functionDefinition
     | fileLevelConstant
     | customErrorDefinition
+    | typeDefinition
     )* EOF ;
 
 pragmaDirective
@@ -61,7 +62,8 @@ contractPart
   | functionDefinition
   | eventDefinition
   | enumDefinition
-  | customErrorDefinition;
+  | customErrorDefinition
+  | typeDefinition;
 
 stateVariableDeclaration
   : typeName
@@ -73,6 +75,10 @@ fileLevelConstant
 
 customErrorDefinition
   : 'error' identifier parameterList ';' ;
+
+typeDefinition
+  : 'type' identifier
+    'is'  elementaryTypeName ';' ;
 
 usingForDeclaration
   : 'using' identifier 'for' ('*' | typeName) ';' ;
