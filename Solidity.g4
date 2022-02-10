@@ -81,7 +81,7 @@ typeDefinition
     'is'  elementaryTypeName ';' ;
 
 usingForDeclaration
-  : 'using' identifier 'for' ('*' | typeName) ';' ;
+  : 'using' userDefinedTypeName 'for' ('*' | typeName) ';' ;
 
 structDefinition
   : 'struct' identifier
