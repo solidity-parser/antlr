@@ -353,13 +353,15 @@ assemblyCall
   : ( 'return' | 'address' | 'byte' | identifier ) ( '(' assemblyExpression? ( ',' assemblyExpression )* ')' )? ;
 
 assemblyLocalDefinition
-  : 'let' assemblyIdentifierOrList ( ':=' assemblyExpression )? ;
+  : 'let' assemblyIdentifier ( ':=' assemblyExpression )?
+  | 'let' assemblyIdentifierList ( ':=' assemblyCall )? ;
 
 assemblyAssignment
-  : assemblyIdentifierOrList ':=' assemblyExpression ;
+  : assemblyIdentifier ':=' assemblyExpression
+  | assemblyIdentifierList ':=' assemblyCall;
 
-assemblyIdentifierOrList
-  : identifier | assemblyMember | '(' assemblyIdentifierList ')' ;
+assemblyIdentifier
+  : identifier | assemblyMember;
 
 assemblyIdentifierList
   : identifier ( ',' identifier )* ;
