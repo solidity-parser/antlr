@@ -15,6 +15,7 @@ sourceUnit
     | fileLevelConstant
     | customErrorDefinition
     | typeDefinition
+    | usingForDeclaration
     )* EOF ;
 
 pragmaDirective
@@ -81,7 +82,11 @@ typeDefinition
     'is'  elementaryTypeName ';' ;
 
 usingForDeclaration
-  : 'using' userDefinedTypeName 'for' ('*' | typeName) ';' ;
+  : 'using' usingForObject 'for' ('*' | typeName) GlobalKeyword? ';';
+
+usingForObject
+  : userDefinedTypeName
+  | '{' userDefinedTypeName ( ',' userDefinedTypeName )* '}';
 
 structDefinition
   : 'struct' identifier
@@ -481,6 +486,7 @@ VirtualKeyword : 'virtual' ;
 PureKeyword : 'pure' ;
 TypeKeyword : 'type' ;
 ViewKeyword : 'view' ;
+GlobalKeyword : 'global' ;
 
 ConstructorKeyword : 'constructor' ;
 FallbackKeyword : 'fallback' ;

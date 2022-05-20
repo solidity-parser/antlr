@@ -914,3 +914,8 @@ contract Foo {
     (uint[][][] memory x, uint y) = abi.decode(data, (uint[][][], uint));
   }
 }
+
+// issue #61
+type Fixed18 is int256;
+using Fixed18Lib for Fixed18 global;
+using {plusOne, minusOne} for RestrictedNumber global;
