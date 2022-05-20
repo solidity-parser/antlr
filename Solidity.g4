@@ -24,7 +24,7 @@ pragmaName
   : identifier ;
 
 pragmaValue
-  : version | expression ;
+  : '*' | version | expression ;
 
 version
   : versionConstraint ('||'? versionConstraint)* ;
