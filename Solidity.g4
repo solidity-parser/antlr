@@ -365,7 +365,7 @@ assemblyIdentifierList
   : identifier ( ',' identifier )* ;
 
 assemblyStackAssignment
-  : '=:' identifier ;
+  : assemblyExpression '=:' identifier ;
 
 labelDefinition
   : identifier ':' ;

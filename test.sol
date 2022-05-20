@@ -891,3 +891,13 @@ library FixedMath {
 contract C {
   using L.Lib for uint;
 }
+
+// issue #12
+contract C {
+  function f() public {
+    assembly {
+      x := 3
+      4 =: y
+    }
+  }
+}
