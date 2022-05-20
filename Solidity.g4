@@ -298,11 +298,11 @@ primaryExpression
   | numberLiteral
   | hexLiteral
   | stringLiteral
-  | identifier ('[' ']')?
+  | identifier
   | TypeKeyword
   | PayableKeyword
   | tupleExpression
-  | typeNameExpression ('[' ']')? ;
+  | typeName;
 
 expressionList
   : expression (',' expression)* ;

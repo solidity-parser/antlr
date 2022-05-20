@@ -901,3 +901,13 @@ contract C {
     }
   }
 }
+
+// issue #54
+contract Foo {
+  function f() public {
+    (uint[][] memory x, uint y) = abi.decode(data, (uint[][], uint));
+    (uint[3][] memory x, uint y) = abi.decode(data, (uint[3][], uint));
+    (uint[][3] memory x, uint y) = abi.decode(data, (uint[][3], uint));
+    (uint[][][] memory x, uint y) = abi.decode(data, (uint[][][], uint));
+  }
+}
