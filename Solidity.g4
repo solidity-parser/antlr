@@ -219,7 +219,10 @@ forStatement
   : 'for' '(' ( simpleStatement | ';' ) ( expressionStatement | ';' ) expression? ')' statement ;
 
 inlineAssemblyStatement
-  : 'assembly' StringLiteralFragment? assemblyBlock ;
+  : 'assembly' StringLiteralFragment? ('(' inlineAssemblyStatementFlag ')')? assemblyBlock ;
+
+inlineAssemblyStatementFlag
+  : stringLiteral;
 
 doWhileStatement
   : 'do' statement 'while' '(' expression ')' ';' ;

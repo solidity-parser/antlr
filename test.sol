@@ -919,3 +919,12 @@ contract Foo {
 type Fixed18 is int256;
 using Fixed18Lib for Fixed18 global;
 using {plusOne, minusOne} for RestrictedNumber global;
+
+contract Foo {
+  function f() public {
+    assembly ("memory-safe") {
+    }
+    assembly "evmasm" ("memory-safe") {
+    }
+  }
+}
