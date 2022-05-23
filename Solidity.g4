@@ -409,10 +409,6 @@ tupleExpression
   : '(' ( expression? ( ',' expression? )* ) ')'
   | '[' ( expression ( ',' expression )* )? ']' ;
 
-typeNameExpression
-  : elementaryTypeName
-  | userDefinedTypeName ;
-
 numberLiteral
   : (DecimalNumber | HexNumber) NumberUnit? ;
 
