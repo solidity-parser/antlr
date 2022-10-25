@@ -483,6 +483,7 @@ contract test {
 			// function dispatcher
 			switch div(calldataload(0), exp(2, 226))
 			case 0xb3de648b {
+				let (r) := f(calldataload(4))
 				let r := f(calldataload(4))
 				let ret := $allocate(0x20)
 				mstore(ret, r)

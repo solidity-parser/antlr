@@ -361,15 +361,16 @@ assemblyCall
   : ( 'return' | 'address' | 'byte' | identifier ) ( '(' assemblyExpression? ( ',' assemblyExpression )* ')' )? ;
 
 assemblyLocalDefinition
-  : 'let' assemblyIdentifier ( ':=' assemblyExpression )?
-  | 'let' assemblyIdentifierList ( ':=' assemblyCall )? ;
+  : 'let' assemblyIdentifierOrList ( ':=' assemblyExpression )? ;
 
 assemblyAssignment
-  : assemblyIdentifier ':=' assemblyExpression
-  | assemblyIdentifierList ':=' assemblyCall;
+  : assemblyIdentifierOrList ':=' assemblyExpression;
 
-assemblyIdentifier
-  : identifier | assemblyMember;
+assemblyIdentifierOrList
+  : identifier
+  | assemblyMember
+  | assemblyIdentifierList
+  | '(' assemblyIdentifierList ')';
 
 assemblyIdentifierList
   : identifier ( ',' identifier )* ;
