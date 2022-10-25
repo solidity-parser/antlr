@@ -1,3 +1,7 @@
+/*
+ * Pragmas
+ */
+
 pragma solidity 0.4.4;
 pragma solidity ^0.4.4;
 pragma solidity ~0.4.4;
@@ -13,13 +17,163 @@ pragma solidity ^0.5.0 || ^0.6.0;
 pragma solidity ^0.5.0 || ^0.6.0 || ^0.7.0;
 pragma experimental ABIEncoderV2;
 
-// issue #55
-pragma solidity *;
+/*
+ * Imports
+ */
+
+import "./abc.sol";
+import "./def.sol";
+import "./abc.sol" as x;
+import * as y from "./abc.sol";
+import {a as b, c as d, f} from "./abc.sol";
+import './abc.sol' as my_abc;
+import { a as my_a, b as my_b } from './abc.sol';
+import * as abc from './abc.sol';
+
+/*
+ * Enums
+ */
+
+enum Locations {
+    Continent,
+    Empire,
+    Union,
+    Country,
+    State,
+    City,
+    Council,
+    Village
+}
+contract c {
+    enum foo { }
+    enum validEnum { Value1, Value2, Value3, Value4 }
+}
+
+/*
+ * Top-level functions
+ */
+
+function helper(uint x) pure returns (uint) {
+    return x * 2;
+}
+
+/*
+ * Top-level structs
+ */
+
+struct KeyValuePair {
+    string name;
+    int256 value;
+}
+
+struct GlobalBaseStruct {
+    KeyValuePair[] pairs;
+    Locations location;
+}
+
+/*
+ * Constants
+ */
+
+uint constant topLevelConstantVariable = 3;
+
+/*
+ * Custom errors
+ */
+
+error TopLevelCustomError();
+error TopLevelCustomErrorWithArg(uint x);
+error TopLevelCustomErrorArgWithoutName(string);
+
+contract CustomErrors {
+  error ContractCustomError();
+  error ContractCustomErrorWithArg(uint x);
+  error ContractCustomErrorArgWithoutName(string);
+
+  function throwCustomError() {
+    revert ContractCustomError();
+  }
+}
+
+/*
+ * User-defined value types
+ */
+
+type Price is uint128;
+type Quantity is uint128;
+type UFixed is uint256;
+
+contract Foo {
+  type Id is uint8;
+
+  Id public id;
+}
+
+/*
+ * Strings
+ */
+
+contract test {
+    string a = hex"00FF0000";
+    string b = hex'00AA0000';
+    string b = hex'00AA_0000';
+    string b = hex"";
+    string a = "aaa"
+    "bbb";
+    string b = "aaa""bbb";
+    string c = "aaa"  "bbb";
+
+    // unicode strings
+    string a = unicode"Hello 😃";
+    string b = unicode'Hello 😃';
+
+    // hex literal parts
+    function foo() public {
+      bytes memory c = hex'dead' hex'beef'
+        hex'deadbe' hex'ef';
+    }
+}
+
+/*
+ * Libraries
+ */
 
 library a {}
 library b {}
 library c {}
 library f {}
+
+library Lib {
+}
+
+library Lib {
+    function f() { }
+}
+
+library FixedMath {
+    uint constant multiplier = 10**18;
+
+    function add(UFixed a, UFixed b) internal pure returns (UFixed) {
+        return UFixed.wrap(UFixed.unwrap(a) + UFixed.unwrap(b));
+    }
+
+    function mul(UFixed a, uint256 b) internal pure returns (UFixed) {
+        return UFixed.wrap(UFixed.unwrap(a) * b);
+    }
+
+    function floor(UFixed a) internal pure returns (uint256) {
+        return UFixed.unwrap(a) / multiplier;
+    }
+
+    function toUFixed(uint256 a) internal pure returns (UFixed) {
+        return UFixed.wrap(a * multiplier);
+    }
+}
+
+/*
+ * Etc
+ */
+
 contract test {
     function f(uint a, uint b);
     function g(uint c);
@@ -43,9 +197,6 @@ contract test {
         uint256 x = ([1, 2, 3 + 4][a/=9] - 3) ** 4;
     }
 }
-import "./abc.sol" as x;
-import * as y from "./abc.sol";
-import {a as b, c as d, f} from "./abc.sol";
 
 contract z {}
 contract A {
@@ -113,18 +264,14 @@ contract A {
         fixed b;
     }
 }
-library d {}
 contract test {
   function fun(uint256 a) returns (address b) {
     if (a < 0) b = 0x67; else if (a == 0) b = 0x12; else b = 0x78;
   }
 }
-//
 contract test
 {}
-contract c {
-    enum foo { }
-}
+
 contract test {
   uint256 stateVar;
   function functionName(bytes20 arg1, address addr) constant
@@ -199,16 +346,8 @@ contract test {
         }
     }
 }
-// contract from {
-// }
 contract test {
   function functionName(bytes32 input) returns (bytes32 out);
-}
-contract test {
-    string a = hex"00FF0000";
-    string b = hex'00AA0000';
-    string b = hex'00AA_0000';
-    string b = hex"";
 }
 contract test {
     function fun(uint256 a) {
@@ -219,31 +358,25 @@ contract test {
         }
     }
 }
-import './abc.sol' as my_abc;
 
 contract test {}
-import { a as my_a, b as my_b } from './abc.sol';
 
 contract test {}
-import "./abc.sol";
 
 contract test {
   function fun() {
     uint64(2);
   }
 }
-import * as abc from './abc.sol';
 
 contract test {}
+
 contract c {
     uint[] a;
     function f() returns (uint, uint) {
         a = [1,2,3];
         return (a[3], [2,3,4][0]);
     }
-}
-library Lib {
-    function f() { }
 }
 contract test {
     function test() {
@@ -263,6 +396,7 @@ contract test {
 
     uint256 a;
 }
+
 contract c {
     function c ()
     {
@@ -276,9 +410,6 @@ contract Foo {
         uint[] memory y;
     }
 }
-// contract Foo {
-//     function f(uint[] constant x, uint[] memory y) { }
-// }
 contract test {
     mapping(address => bytes32) names;
 }
@@ -298,6 +429,7 @@ contract test {
 contract c {
     modifier mod { if (msg.sender == 0) _; }
 }
+
 contract c {
     modifier mod(address a) { if (msg.sender == a) _; }
 }
@@ -332,7 +464,6 @@ contract test2 {
     uint64(2);
   }
 }
-import "./abc.sol";
 
 contract test {
   function fun() {
@@ -343,8 +474,6 @@ contract test2 {
   function fun() {
   }
 }
-
-import "./def.sol";
 
 contract foo {
   function foo(uint a) {
@@ -369,6 +498,7 @@ contract test {
   uint256 stateVar;
   function functionName() {}
 }
+
 contract test {
     function fun(int256 a) {
         int256 x = (1 + 4) * (a - 12) + -9;
@@ -385,7 +515,6 @@ contract c {
         return _ + 1;
     }
 }
-pragma solidity ^0.4.4;
 
 contract test {}
 contract test {
@@ -431,8 +560,6 @@ contract test {
 
         bool b = !true;
     }
-}
-library Lib {
 }
 
 contract C {
@@ -550,6 +677,10 @@ contract test {
 }
 
 contract test {
+    constructor(uint a, uint b) withModifier public {}
+}
+
+contract test {
   function () payable {
     (bytes32 a, uint b) = foo();
   }
@@ -571,9 +702,9 @@ contract test {
   int x3 = -1000000 * 200;
   uint y = .25;
   uint y2 = 0.25;
-  // uint y3 = 10.25;
-  // uint y4 = 100.25;
-  // uint y5 = 0.0025 * 1e18;
+  uint y3 = 10.25;
+  uint y4 = 100.25;
+  uint y5 = 0.0025 * 1e18;
   uint z = 0x11_22;
   uint z2 = 0x1122;
 }
@@ -655,13 +786,10 @@ contract FeedConsumer {
     }
 }
 
-
 contract test {
   receive () external payable {}
   fallback () external payable {}
 }
-
-pragma solidity >=0.5.0 <0.7.0;
 
 contract D {
     uint public x;
@@ -684,8 +812,6 @@ contract C {
         newD.x();
     }
 }
-
-pragma solidity >0.6.1 <0.7.0;
 
 contract D {
     uint public x;
@@ -713,15 +839,6 @@ contract C {
         require(address(d) == predictedAddress);
     }
 }
-
-contract c {
-    string a = "aaa"
-    "bbb";
-    string b = "aaa""bbb";
-    string c = "aaa"  "bbb";
-}
-
-pragma solidity >=0.4.22 <0.7.0;
 
 contract owned {
     constructor() public { owner = msg.sender; }
@@ -754,29 +871,6 @@ contract PayableAddress {
     }
 }
 
-// Solidity 0.6
-enum Locations {
-    Continent,
-    Empire,
-    Union,
-    Country,
-    State,
-    City,
-    Council,
-    Village
-}
-
-struct KeyValuePair {
-    string name;
-    int256 value;
-}
-
-struct GlobalBaseStruct {
-    KeyValuePair[] pairs;
-    Locations location;
-}
-
-
 contract VirtualA {
     GlobalBaseStruct base;
     event MyEvent(string _myString);
@@ -798,6 +892,31 @@ contract VirtualOverdide is VirtualA, VirtualB {
     }
 }
 
+contract AssemblySlotNotation {
+  function foo() {
+    assembly {
+      ds.slot := position
+      offset := x.offset
+    }
+  }
+}
+
+contract ArraySlices {
+    function f(bytes calldata x) public {
+        bytes memory a1 = abi.decode(x[:], (bytes));
+        bytes4 a2 = abi.decode(x[:4], (bytes4));
+        address a3 = abi.decode(x[4:], (address));
+    }
+}
+
+contract WithUncheckedBlock {
+  function f() public pure returns (uint) {
+    uint x = 0;
+    unchecked { x--; }
+    return x;
+  }
+}
+
 contract stateVariables {
     bytes32 constant adminRole = keccak256("ADMIN_ROLE");
     uint immutable totalSupply;
@@ -815,86 +934,47 @@ contract modifierWithVirtualOrOverride {
   modifier bar() override {_;}
 }
 
-contract AssemblySlotNotation {
+contract Base1
+{
+    function foo() virtual public {}
+}
+
+contract Base2
+{
+    function foo() virtual public {}
+}
+
+contract Inherited is Base1, Base2
+{
+    // Derives from multiple bases defining foo(), so we must explicitly
+    // override it
+    function foo() public override(Base1, Base2) {}
+}
+
+contract CallWithNameValue {
   function foo() {
-    assembly {
-      ds.slot := position
-      offset := x.offset
-    }
+    recipient.call("");
+    recipient.call{value: 1}("");
+    recipient.call{value: 1, gas: 1000}("");
   }
 }
 
-// top-level function
-function helper(uint x) pure returns (uint) {
-    return x * 2;
+contract FunctionsNamedAsKeywords {
+  function receive() {}
+  function leave() {}
 }
 
-uint constant topLevelConstantVariable = 3;
-
-contract HexLiteralsParts {
-  function foo() public {
-    bytes memory c = hex'dead' hex'beef'
-      hex'deadbe' hex'ef';
-  }
+contract ImmutableKeyword {
+  uint immutable foo;
 }
 
-contract WithUncheckedBlock {
-  function f() public pure returns (uint) {
-    uint x = 0;
-    unchecked { x--; }
-    return x;
-  }
+contract FallbackWithArgs {
+  fallback (bytes calldata input) external payable returns (bytes memory output) {}
 }
 
-contract UnicodeStrings {
-  string a = unicode"Hello 😃";
-  string b = unicode'Hello 😃';
-}
-
-contract ArraySlices {
-    function f(bytes calldata x) public {
-        bytes memory a1 = abi.decode(x[:], (bytes));
-        bytes4 a2 = abi.decode(x[:4], (bytes4));
-        address a3 = abi.decode(x[4:], (address));
-    }
-}
-
-// User defined value types
-type Price is uint128;
-type Quantity is uint128;
-
-contract Foo {
-  type Id is uint8;
-
-  Id public id;
-}
-
-type UFixed is uint256;
-
-library FixedMath {
-    uint constant multiplier = 10**18;
-
-    function add(UFixed a, UFixed b) internal pure returns (UFixed) {
-        return UFixed.wrap(UFixed.unwrap(a) + UFixed.unwrap(b));
-    }
-
-    function mul(UFixed a, uint256 b) internal pure returns (UFixed) {
-        return UFixed.wrap(UFixed.unwrap(a) * b);
-    }
-
-    function floor(UFixed a) internal pure returns (uint256) {
-        return UFixed.unwrap(a) / multiplier;
-    }
-
-    function toUFixed(uint256 a) internal pure returns (UFixed) {
-        return UFixed.wrap(a * multiplier);
-    }
-}
-
-// issue #59
-contract C {
-  using L.Lib for uint;
-}
+/*
+ * Issues
+ */
 
 // issue #12
 contract C {
@@ -916,18 +996,12 @@ contract Foo {
   }
 }
 
-// issue #61
-type Fixed18 is int256;
-using Fixed18Lib for Fixed18 global;
-using {plusOne, minusOne} for RestrictedNumber global;
+// issue #55
+pragma solidity *;
 
-contract Foo {
-  function f() public {
-    assembly ("memory-safe") {
-    }
-    assembly "evmasm" ("memory-safe") {
-    }
-  }
+// issue #59
+contract C {
+  using L.Lib for uint;
 }
 
 // issue #60
@@ -944,4 +1018,18 @@ contract AssemblyAssingment {
             i, j := bar()
         }
     }
+}
+
+// issue #61
+type Fixed18 is int256;
+using Fixed18Lib for Fixed18 global;
+using {plusOne, minusOne} for RestrictedNumber global;
+
+contract Foo {
+  function f() public {
+    assembly ("memory-safe") {
+    }
+    assembly "evmasm" ("memory-safe") {
+    }
+  }
 }
