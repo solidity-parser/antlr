@@ -403,7 +403,7 @@ assemblyIf
   : 'if' assemblyExpression assemblyBlock ;
 
 assemblyLiteral
-  : stringLiteral | DecimalNumber | HexNumber | hexLiteral ;
+  : stringLiteral | DecimalNumber | HexNumber | hexLiteral | BooleanLiteral ;
 
 subAssembly
   : 'assembly' identifier assemblyBlock ;
