@@ -171,6 +171,20 @@ library FixedMath {
 }
 
 /*
+ * Assembly
+ */
+
+contract BooleanLiteralsInAssembly {
+  function f() {
+    uint a;
+    assembly {
+      a := true
+      a := false
+    }
+  }
+}
+
+/*
  * Etc
  */
 
