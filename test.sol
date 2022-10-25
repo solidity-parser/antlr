@@ -483,7 +483,7 @@ contract test {
 			// function dispatcher
 			switch div(calldataload(0), exp(2, 226))
 			case 0xb3de648b {
-				let (r) := f(calldataload(4))
+				let r := f(calldataload(4))
 				let ret := $allocate(0x20)
 				mstore(ret, r)
 				return(ret, 0x20)
@@ -927,4 +927,20 @@ contract Foo {
     assembly "evmasm" ("memory-safe") {
     }
   }
+}
+
+// issue #60
+contract AssemblyAssingment {
+    function foo() public pure {
+        assembly {
+            function bar() -> a, b {
+                a := 1
+                b := 2
+            }
+
+            let i, j
+            let k, l := bar()
+            i, j := bar()
+        }
+    }
 }
