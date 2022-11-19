@@ -346,7 +346,6 @@ assemblyItem
   | BreakKeyword
   | ContinueKeyword
   | LeaveKeyword
-  | subAssembly
   | numberLiteral
   | stringLiteral
   | hexLiteral ;
@@ -404,9 +403,6 @@ assemblyIf
 
 assemblyLiteral
   : stringLiteral | DecimalNumber | HexNumber | hexLiteral | BooleanLiteral ;
-
-subAssembly
-  : 'assembly' identifier assemblyBlock ;
 
 tupleExpression
   : '(' ( expression? ( ',' expression? )* ) ')'
