@@ -1047,3 +1047,11 @@ contract Foo {
     }
   }
 }
+
+// solc 0.8.18, named parameters in mapping types
+contract NamedMappingParams {
+  mapping (address => bool) m1;
+  mapping (address a => bool) m2;
+  mapping (address => bool b) m3;
+  mapping (address a => bool b) m4;
+}

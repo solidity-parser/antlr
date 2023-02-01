@@ -159,7 +159,10 @@ mappingKey
   | userDefinedTypeName ;
 
 mapping
-  : 'mapping' '(' mappingKey '=>' typeName ')' ;
+  : 'mapping' '(' mappingKey mappingKeyName? '=>' typeName mappingValueName? ')' ;
+
+mappingKeyName : identifier;
+mappingValueName : identifier;
 
 functionTypeName
   : 'function' functionTypeParameterList
