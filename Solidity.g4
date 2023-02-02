@@ -176,7 +176,7 @@ stateMutability
   : PureKeyword | ConstantKeyword | ViewKeyword | PayableKeyword ;
 
 block
-  : '{' statement* '}' ;
+  : '{' statement* '}' | '{}' ;
 
 statement
   : ifStatement
