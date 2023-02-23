@@ -2,7 +2,7 @@
 
 ANTLR_JAR="antlr4.jar"
 
-GRAMMAR="Solidity"
+GRAMMAR="grammar/*"
 START_RULE="sourceUnit"
 TEST_FILE="test.sol"
 ERROR_PATTERN="mismatched|extraneous"
@@ -13,7 +13,7 @@ fi
 
 mkdir -p target/
 
-java -jar $ANTLR_JAR $GRAMMAR.g4 -o src/
+java -jar $ANTLR_JAR $GRAMMAR -o src/
 javac -classpath $ANTLR_JAR src/*.java -d target/
 
 

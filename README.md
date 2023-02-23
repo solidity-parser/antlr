@@ -5,9 +5,13 @@ The [ANTLR (ANother Tool for Language Recognition) ](https://www.antlr.org/) gra
 This is a fork of ([@federicobond](https://github.com/federicobond))'s original [repo](https://github.com/solidityj/solidity-antlr4),
 with some extra features taken from [Consensys Diligence's alternative fork](https://github.com/ConsenSys/solidity-antlr4).
 
+## Sources
+
+This repo uses the "official" grammar available on the [solidity github](https://github.com/ethereum/solidity/tree/develop/docs/grammar)
+
 ## Build
 
-Run [build.sh](./build.sh) to download the ANTLR jar file and compile the [Solidity.g4](./Solidity.g4) file. The build will output the Java classes to the `src` folder and compiled Java classes to the `target` folder. The ANTLR tokens used by the Java parser are in the `src` folder.
+Run [build.sh](./build.sh) to download the ANTLR jar file and compile the [SoliditLexer.g4](./grammar/SolidityLexer.g4) and [SolidityParser.g4](./grammar/SolidityParser.g4) file. The build will output the Java classes to the `src` folder and compiled Java classes to the `target` folder. The ANTLR tokens used by the Java parser are in the `src` folder.
 
 ## Tests
 
