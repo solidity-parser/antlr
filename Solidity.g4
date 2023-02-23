@@ -89,7 +89,7 @@ usingForObject
   | '{' usingForObjectDirective ( ',' usingForObjectDirective )* '}';
 
 usingForObjectDirective
-  : userDefinedTypeName ( 'as' userDefinableOperators )?
+  : userDefinedTypeName ( 'as' userDefinableOperators )?;
 
 userDefinableOperators
   : '|' | '&' | '^' | '~' | '+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '>' | '<=' | '>=' ;
