@@ -1055,3 +1055,7 @@ contract NamedMappingParams {
   mapping (address => bool b) m3;
   mapping (address a => bool b) m4;
 }
+
+// solc 0.8.19, user defined operators
+using { add as + } for Fixed18 global;
+using { add as +, sub as - } for Fixed18 global;

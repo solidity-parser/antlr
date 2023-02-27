@@ -86,7 +86,13 @@ usingForDeclaration
 
 usingForObject
   : userDefinedTypeName
-  | '{' userDefinedTypeName ( ',' userDefinedTypeName )* '}';
+  | '{' usingForObjectDirective ( ',' usingForObjectDirective )* '}';
+
+usingForObjectDirective
+  : userDefinedTypeName ( 'as' userDefinableOperators )?;
+
+userDefinableOperators
+  : '|' | '&' | '^' | '~' | '+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '>' | '<=' | '>=' ;
 
 structDefinition
   : 'struct' identifier
