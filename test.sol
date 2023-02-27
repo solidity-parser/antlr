@@ -1058,3 +1058,4 @@ contract NamedMappingParams {
 
 // solc 0.8.19, user defined operators
 using { add as + } for Fixed18 global;
+using { add as +, sub as - } for Fixed18 global;
