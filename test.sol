@@ -1048,6 +1048,13 @@ contract Foo {
   }
 }
 
+
+contract GlobalVarName {
+    function test() pure {
+        uint256 global = 1;
+    }
+}
+
 // solc 0.8.18, named parameters in mapping types
 contract NamedMappingParams {
   mapping (address => bool) m1;
