@@ -13,7 +13,7 @@ sourceUnit
     | structDefinition
     | functionDefinition
     | fileLevelConstant
-    | customErrorDefinition
+    | errorDefinition
     | typeDefinition
     | usingForDeclaration
     )* EOF ;
@@ -63,7 +63,7 @@ contractPart
   | functionDefinition
   | eventDefinition
   | enumDefinition
-  | customErrorDefinition
+  | errorDefinition
   | typeDefinition;
 
 stateVariableDeclaration
@@ -74,7 +74,7 @@ stateVariableDeclaration
 fileLevelConstant
   : typeName ConstantKeyword identifier '=' expression ';' ;
 
-customErrorDefinition
+errorDefinition
   : 'error' identifier parameterList ';' ;
 
 typeDefinition
