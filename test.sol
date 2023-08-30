@@ -660,6 +660,7 @@ contract test {
 contract test {
   function f() {
     uint256 a = 2.3e5;
+    uint256 a = 230e-1;
   }
 }
 
@@ -719,6 +720,7 @@ contract test {
   uint y3 = 10.25;
   uint y4 = 100.25;
   uint y5 = 0.0025 * 1e18;
+  uint y6 = 1000000e-2;
   uint z = 0x11_22;
   uint z2 = 0x1122;
 }
