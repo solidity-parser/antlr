@@ -459,31 +459,8 @@ hexLiteral : HexLiteralFragment+ ;
 HexLiteralFragment : 'hex' ('"' HexDigits? '"' | '\'' HexDigits? '\'') ;
 
 fragment
-HexPair
-  : HexCharacter HexCharacter ;
-
-fragment
 HexCharacter
   : [0-9A-Fa-f] ;
-
-ReservedKeyword
-  : 'abstract'
-  | 'after'
-  | 'case'
-  | 'catch'
-  | 'default'
-  | 'final'
-  | 'in'
-  | 'inline'
-  | 'let'
-  | 'match'
-  | 'null'
-  | 'of'
-  | 'relocatable'
-  | 'static'
-  | 'switch'
-  | 'try'
-  | 'typeof' ;
 
 AnonymousKeyword : 'anonymous' ;
 BreakKeyword : 'break' ;
