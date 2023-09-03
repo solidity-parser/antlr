@@ -501,8 +501,7 @@ stringLiteral
   : StringLiteralFragment+ ;
 
 StringLiteralFragment
-  : 'unicode'? '"' DoubleQuotedStringCharacter* '"'
-  | 'unicode'? '\'' SingleQuotedStringCharacter* '\'' ;
+  : 'unicode'? ( '"' DoubleQuotedStringCharacter* '"' | '\'' SingleQuotedStringCharacter* '\'' ) ;
 
 fragment
 DoubleQuotedStringCharacter
