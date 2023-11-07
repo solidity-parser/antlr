@@ -10,6 +10,7 @@ sourceUnit
     | importDirective
     | contractDefinition
     | enumDefinition
+    | eventDefinition
     | structDefinition
     | functionDefinition
     | fileLevelConstant

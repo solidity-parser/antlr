@@ -44,6 +44,9 @@ enum Locations {
     Council,
     Village
 }
+
+event E();
+
 contract c {
     enum foo { }
     enum validEnum { Value1, Value2, Value3, Value4 }
