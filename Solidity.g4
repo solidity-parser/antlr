@@ -151,12 +151,12 @@ variableDeclaration
   : typeName storageLocation? identifier ;
 
 typeName
-  : elementaryTypeName
+  : elementaryTypeName stateMutability?
   | userDefinedTypeName
   | mapping
   | typeName '[' expression? ']'
   | functionTypeName
-  | 'address' 'payable' ;
+  | 'address';
 
 userDefinedTypeName
   : identifier ( '.' identifier )* ;
