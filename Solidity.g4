@@ -69,7 +69,7 @@ contractPart
 
 stateVariableDeclaration
   : typeName
-    ( PublicKeyword | InternalKeyword | PrivateKeyword | ConstantKeyword | ImmutableKeyword | overrideSpecifier )*
+    ( PublicKeyword | InternalKeyword | PrivateKeyword | ConstantKeyword | TransientKeyword | ImmutableKeyword | overrideSpecifier )*
     identifier ('=' expression)? ';' ;
 
 fileLevelConstant
@@ -485,6 +485,7 @@ ReservedKeyword
 AnonymousKeyword : 'anonymous' ;
 BreakKeyword : 'break' ;
 ConstantKeyword : 'constant' ;
+TransientKeyword : 'transient' ;
 ImmutableKeyword : 'immutable' ;
 ContinueKeyword : 'continue' ;
 LeaveKeyword : 'leave' ;
