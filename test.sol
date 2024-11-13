@@ -1071,3 +1071,28 @@ contract NamedMappingParams {
 // solc 0.8.19, user defined operators
 using { add as + } for Fixed18 global;
 using { add as +, sub as - } for Fixed18 global;
+
+// solc 0.8.28, transient storage, taken from solc docs
+contract Generosity {
+    mapping(address => bool) sentGifts;
+    bool transient locked;
+
+    modifier nonReentrant {
+        require(!locked, "Reentrancy attempt");
+        locked = true;
+        _;
+        // Unlocks the guard, making the pattern composable.
+        // After the function exits, it can be called again, even in the same transaction.
+        locked = false;
+    }
+
+    function claimGift() nonReentrant public {
+        require(address(this).balance >= 1 ether);
+        require(!sentGifts[msg.sender]);
+        (bool success, ) = msg.sender.call{value: 1 ether}("");
+        require(success);
+
+        // In a reentrant function, doing this last would open up the vulnerability
+        sentGifts[msg.sender] = true;
+    }
+}
