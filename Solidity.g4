@@ -464,22 +464,34 @@ HexCharacter
   : [0-9A-Fa-f] ;
 
 ReservedKeyword
-  : 'abstract'
-  | 'after'
+  : 'after'
+  | 'alias'
+  | 'apply'
+  | 'auto'
   | 'case'
-  | 'catch'
+  | 'copyof'
   | 'default'
+  | 'define'
   | 'final'
+  | 'implements'
   | 'in'
   | 'inline'
   | 'let'
+  | 'macro'
   | 'match'
+  | 'mutable'
   | 'null'
   | 'of'
+  | 'partial'
+  | 'promise'
+  | 'reference'
   | 'relocatable'
+  | 'sealed'
+  | 'sizeof'
   | 'static'
+  | 'supports'
   | 'switch'
-  | 'try'
+  | 'typedef'
   | 'typeof' ;
 
 AnonymousKeyword : 'anonymous' ;
