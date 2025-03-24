@@ -50,11 +50,16 @@ importPath : StringLiteralFragment ;
 
 contractDefinition
   : 'abstract'? ( 'contract' | 'interface' | 'library' ) identifier
+    customStorageLayout?
     ( 'is' inheritanceSpecifier (',' inheritanceSpecifier )* )?
+    customStorageLayout?
     '{' contractPart* '}' ;
 
 inheritanceSpecifier
   : userDefinedTypeName ( '(' expressionList? ')' )? ;
+
+customStorageLayout
+  : ( 'layout at' expression) ;
 
 contractPart
   : stateVariableDeclaration

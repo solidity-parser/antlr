@@ -1096,3 +1096,20 @@ contract Generosity {
         sentGifts[msg.sender] = true;
     }
 }
+
+// solc 0.8.29 added syntax for custom storage layout
+contract C layout at 2**255 - 42 {
+    uint x;
+}
+
+contract C layout at 0xAAAA + 0x11 {
+    uint[3] x; // Occupies slots 0xAABB..0xAABD
+}
+
+contract C is D layout at 0xAAAA + 0x11 {
+    uint[3] x; // Occupies slots 0xAABB..0xAABD
+}
+
+contract C layout at 0xAAAA + 0x11 is D {
+    uint[3] x; // Occupies slots 0xAABB..0xAABD
+}
