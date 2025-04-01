@@ -59,7 +59,7 @@ inheritanceSpecifier
   : userDefinedTypeName ( '(' expressionList? ')' )? ;
 
 customStorageLayout
-  : ( 'layout at' expression) ;
+  : ( 'layout' 'at' expression) ;
 
 contractPart
   : stateVariableDeclaration
